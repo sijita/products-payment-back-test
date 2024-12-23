@@ -1,3 +1,4 @@
+import { Delivery } from 'src/modules/deliveries/entities/delivery.entity';
 import { Product } from 'src/modules/products/entities/product.entity';
 import {
   Entity,
@@ -6,6 +7,7 @@ import {
   ManyToOne,
   CreateDateColumn,
   UpdateDateColumn,
+  OneToMany,
 } from 'typeorm';
 
 @Entity()
@@ -26,8 +28,11 @@ export class Transaction {
   @Column('numeric', { precision: 10, scale: 2 })
   amount: number;
 
-  @ManyToOne(() => Product)
+  @ManyToOne(() => Product, (product) => product.transactions, { eager: true })
   product: Product;
+
+  @OneToMany(() => Delivery, (delivery) => delivery.transaction)
+  delivery: Delivery[];
 
   @CreateDateColumn()
   createdAt: Date;
