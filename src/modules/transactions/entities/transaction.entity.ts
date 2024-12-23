@@ -8,7 +8,8 @@ import {
   ManyToOne,
   CreateDateColumn,
   UpdateDateColumn,
-  OneToMany,
+  OneToOne,
+  JoinColumn,
 } from 'typeorm';
 
 @Entity()
@@ -37,8 +38,11 @@ export class Transaction {
   })
   customer: Customer;
 
-  @OneToMany(() => Delivery, (delivery) => delivery.transaction)
-  delivery: Delivery[];
+  @OneToOne(() => Delivery, (delivery) => delivery.transaction, {
+    eager: true,
+  })
+  @JoinColumn()
+  delivery: Delivery;
 
   @CreateDateColumn()
   createdAt: Date;
