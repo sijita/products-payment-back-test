@@ -1,5 +1,6 @@
 import { Transaction } from 'src/modules/transactions/entities/transaction.entity';
 import {
+  Entity,
   Column,
   CreateDateColumn,
   DeleteDateColumn,
@@ -8,6 +9,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
+@Entity()
 export class Customer {
   @PrimaryGeneratedColumn('uuid')
   id: string;
