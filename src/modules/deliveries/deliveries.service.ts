@@ -23,12 +23,26 @@ export class DeliveriesService {
   ) {}
 
   async createDelivery({
-    address,
     transactionId,
+    country,
+    region,
+    city,
+    address,
+    subAddress,
+    postalCode,
   }: CreateDeliveryDto): Promise<Delivery> {
     try {
-      if (!transactionId || !address) {
-        throw new BadRequestException('TransactionId and address are required');
+      if (
+        !transactionId ||
+        !address ||
+        !subAddress ||
+        !country ||
+        !region ||
+        !city
+      ) {
+        throw new BadRequestException(
+          'transactionId, address, subAddress, country, region, and city are required',
+        );
       }
 
       const transaction = await this.transactionRepository.findOne({
@@ -48,8 +62,13 @@ export class DeliveriesService {
       }
 
       const delivery = this.deliveryRepository.create({
-        address,
         transaction,
+        country,
+        region,
+        city,
+        address,
+        subAddress,
+        postalCode,
         status: 'PENDING',
       });
 

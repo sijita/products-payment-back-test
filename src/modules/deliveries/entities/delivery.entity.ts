@@ -17,6 +17,21 @@ export class Delivery {
   @Column()
   address: string;
 
+  @Column({ name: 'sub_address' })
+  subAddress: string;
+
+  @Column()
+  country: string;
+
+  @Column()
+  region: string;
+
+  @Column()
+  city: string;
+
+  @Column({ name: 'postal_code', nullable: true })
+  postalCode?: string;
+
   @Column({
     type: 'enum',
     enum: ['PENDING', 'IN_TRANSIT', 'DELIVERED'],
