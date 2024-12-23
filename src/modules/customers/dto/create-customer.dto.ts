@@ -10,4 +10,16 @@ export class CreateCustomerDto {
   @IsString()
   @IsEmail()
   email: string;
+
+  @IsNotEmpty()
+  @IsString()
+  phone: string;
+
+  @IsNotEmpty()
+  @IsString()
+  cardType: string;
+
+  @IsNotEmpty()
+  @IsString()
+  cardNumber: string;
 }

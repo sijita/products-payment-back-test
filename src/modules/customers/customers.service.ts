@@ -13,9 +13,21 @@ export class CustomersService {
     private eventEmitter: EventEmitter2,
   ) {}
 
-  async createUser({ email, name }: CreateCustomerDto): Promise<Customer> {
+  async createUser({
+    email,
+    name,
+    phone,
+    cardNumber,
+    cardType,
+  }: CreateCustomerDto): Promise<Customer> {
     try {
-      const customer = this.customerRepository.create({ name, email });
+      const customer = this.customerRepository.create({
+        name,
+        email,
+        phone,
+        cardType,
+        cardNumber,
+      });
 
       await this.customerRepository.save(customer);
 

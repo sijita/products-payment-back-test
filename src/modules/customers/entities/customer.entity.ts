@@ -20,6 +20,15 @@ export class Customer {
   @Column()
   email: string;
 
+  @Column()
+  phone: string;
+
+  @Column()
+  cardType: string;
+
+  @Column()
+  cardNumber: string;
+
   @OneToMany(() => Transaction, (transaction) => transaction.customer)
   transactions: Transaction[];
 
