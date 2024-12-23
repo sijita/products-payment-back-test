@@ -1,3 +1,4 @@
+import { Customer } from 'src/modules/customers/entities/customer.entity';
 import { Delivery } from 'src/modules/deliveries/entities/delivery.entity';
 import { Product } from 'src/modules/products/entities/product.entity';
 import {
@@ -30,6 +31,11 @@ export class Transaction {
 
   @ManyToOne(() => Product, (product) => product.transactions, { eager: true })
   product: Product;
+
+  @ManyToOne(() => Customer, (customer) => customer.transactions, {
+    eager: true,
+  })
+  customer: Customer;
 
   @OneToMany(() => Delivery, (delivery) => delivery.transaction)
   delivery: Delivery[];
