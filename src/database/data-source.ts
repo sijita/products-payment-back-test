@@ -2,12 +2,16 @@ import { Product } from 'src/modules/products/entities/product.entity';
 import { DataSource, DataSourceOptions } from 'typeorm';
 import { runSeeders, SeederOptions } from 'typeorm-extension';
 import ProductSeeder from './seeds/product-seeder';
+import { Transaction } from 'src/modules/transactions/entities/transaction.entity';
+import { Customer } from 'src/modules/customers/entities/customer.entity';
+import { Delivery } from 'src/modules/deliveries/entities/delivery.entity';
 
 const options: DataSourceOptions & SeederOptions = {
   type: 'postgres',
   url: process.env.POSTGRES_URL,
-  entities: [Product],
+  entities: [Product, Transaction, Customer, Delivery],
   seeds: [ProductSeeder],
+  synchronize: true,
 };
 
 export const initializeDatabase = async () => {
