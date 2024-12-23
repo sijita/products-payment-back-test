@@ -3,6 +3,7 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
   OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
@@ -24,6 +25,7 @@ export class Delivery {
   status: string;
 
   @OneToOne(() => Transaction, (transaction) => transaction.delivery)
+  @JoinColumn()
   transaction: Transaction;
 
   @CreateDateColumn()
