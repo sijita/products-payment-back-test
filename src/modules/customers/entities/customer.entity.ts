@@ -10,7 +10,7 @@ import {
 
 export class Customer {
   @PrimaryGeneratedColumn('uuid')
-  id: number;
+  id: string;
 
   @Column()
   name: string;
