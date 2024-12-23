@@ -7,9 +7,11 @@ import { ProductsModule } from './modules/products/products.module';
 import { TransactionsModule } from './modules/transactions/transactions.module';
 import { DeliveriesModule } from './modules/deliveries/deliveries.module';
 import { CustomersModule } from './modules/customers/customers.module';
+import { EventEmitterModule } from '@nestjs/event-emitter';
 
 @Module({
   imports: [
+    EventEmitterModule.forRoot(),
     ConfigModule.forRoot({
       isGlobal: true,
       envFilePath: '.env.local',
