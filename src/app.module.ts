@@ -6,7 +6,6 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ProductsModule } from './modules/products/products.module';
 import { TransactionsModule } from './modules/transactions/transactions.module';
 import { DeliveriesModule } from './modules/deliveries/deliveries.module';
-import { TransactionsModule } from './modules/transactions/transactions.module';
 
 @Module({
   imports: [
