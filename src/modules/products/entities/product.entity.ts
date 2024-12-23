@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Transaction } from 'src/modules/transactions/entities/transaction.entity';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 
 @Entity()
 export class Product {
@@ -16,4 +17,7 @@ export class Product {
 
   @Column({ default: 0 })
   stock: number;
+
+  @OneToMany(() => Transaction, (transaction) => transaction.product)
+  transactions: Transaction[];
 }
